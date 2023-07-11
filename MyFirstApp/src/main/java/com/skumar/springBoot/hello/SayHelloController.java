@@ -1,13 +1,17 @@
 package com.skumar.springBoot.hello;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 //@RestController
 @Controller
 public class SayHelloController {
+	
+	private Logger logger = LoggerFactory.getLogger(getClass());
+	
 
 	@RequestMapping("/say-hello")
 	@ResponseBody
@@ -39,7 +43,6 @@ public class SayHelloController {
 	
 	// src/main/resources/META-INF/resources/WEB-INF/jsp/sayHello.jsp
 	@RequestMapping("say-hello-jsp")
-//	@ResponseBody  -->there is no need to write response body otherewise it will return this string as it is.
 	public String sayHelloJsp() {
 		return "sayHello";
 	}

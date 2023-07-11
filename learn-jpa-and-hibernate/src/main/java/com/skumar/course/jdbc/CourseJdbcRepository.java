@@ -1,6 +1,7 @@
 package com.skumar.course.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +23,23 @@ public class CourseJdbcRepository {
 			"""
 				delete from course where id = ?;
 			""";
-	public void insert() {
-		courseRepo.update(INSERT_QUERY);
+	
+	
+	private static String SELECT_QUERY = 
+			"""
+				select from course where id = ?;
+			""";
+	
+	public void insert(Course course) {
+		courseRepo.update(INSERT_QUERY,course.getId(),course.getName(),course.getAuthor());
+	}
+	
+	
+	public void delete(long id) {
+		courseRepo.update(DELETE_QUERY,id);
+	}
+	
+	public Course selectQuery(long id) {
+		return courseRepo.queryForObject(SELECT_QUERY,new BeanPropertyRowMapper<>(Course.class), id);
 	}
 }
