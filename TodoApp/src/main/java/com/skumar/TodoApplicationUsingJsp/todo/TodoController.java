@@ -1,8 +1,10 @@
-package com.skumar.LoginApplicationUsingJsp.todo;
+package com.skumar.TodoApplicationUsingJsp.todo;
 
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -28,7 +30,10 @@ public class TodoController {
 
 	@RequestMapping("list-todos")
 	public String listAllTodos(ModelMap model) {
-		List<Todo> todos = todoService.findByUsername("susheel");
+		
+		String username =getLoggedInUserName();
+		
+		List<Todo> todos = todoService.findByUsername(username);
 		model.addAttribute("todos",todos);
 		
 		
@@ -83,5 +88,9 @@ public class TodoController {
 		return "redirect:list-todos";
 	}
 	
+	private String getLoggedInUserName() {
+		Authentication authentication =  SecurityContextHolder.getContext().getAuthentication();
+		return authentication.getName();
+	}
 	
 }

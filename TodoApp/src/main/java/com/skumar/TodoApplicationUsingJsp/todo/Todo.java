@@ -1,4 +1,4 @@
-package com.skumar.LoginApplicationUsingJsp.todo;
+package com.skumar.TodoApplicationUsingJsp.todo;
 
 import java.time.LocalDate;
 
