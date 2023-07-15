@@ -11,25 +11,17 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @SessionAttributes("name")
-public class LoginController {
+public class WelcomeController {
 	
 	@RequestMapping("say-hello")
 	@ResponseBody
 	public String sayHello() {
 		return "Welcome to login controller";
 	}
-	@RequestMapping(value ="login",method = RequestMethod.GET)
-//	@ResponseBody
-	public String gotoLogin() {
-		return "login";
-	}
 	
-	
-	@RequestMapping(value ="login",method = RequestMethod.POST)
-	public String gotoWelcome(@RequestParam String name,@RequestParam String password,ModelMap model){
-		
-		model.put("name",name);
-		
+	@RequestMapping(value ="/",method = RequestMethod.GET)
+	public String goToWelcomePage(ModelMap model) {
+		model.put("name","Susheel");
 		return "welcome";
 	}
 }
