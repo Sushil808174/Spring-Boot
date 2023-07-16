@@ -13,13 +13,16 @@ public class Todo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String userName;
 	@Size(min=7,message = "Enter atleast 7 character")
 	private String description;
 	private LocalDate localDate;
 	private boolean done;
 	
+	public Todo() {
+		
+	}
 	
 	public Todo(int id, String userName, String description, LocalDate localDate, boolean done) {
 		super();
