@@ -29,7 +29,7 @@ public class TodoControllerJpa {
 		
 		String username =getLoggedInUserName();
 		
-		List<Todo> todos = todoRepository.findByUsername(username);
+		List<Todo> todos = todoRepository.findByUserName(username);
 		model.addAttribute("todos",todos);
 		
 		
@@ -38,8 +38,12 @@ public class TodoControllerJpa {
 	
 	@RequestMapping(value="add-todo",method=RequestMethod.GET)
 	public String showTodoPage(ModelMap model) {
+		System.out.println("++++++++++++++++++++++++++++++++++++++");
+		System.out.println(model.get("name"));
+		System.out.println("++++++++++++++++++++++++++++++++++++++");
 		String username =(String) model.get("name");
 		Todo todo = new Todo(0,username,"",LocalDate.now().plusYears(1),false);
+		todo.setUserName(username);
 		model.put("todo",todo);
 		return "todo";
 	}
@@ -50,8 +54,6 @@ public class TodoControllerJpa {
 			
 			return "todo";
 		}
-		
-		String username =(String) model.get("name");
 		todoRepository.save(todo);
 		
 		return "redirect:list-todos";
@@ -81,7 +83,6 @@ public class TodoControllerJpa {
 			
 			return "todo";
 		}
-		String username =(String) model.get("name");
 		todoRepository.deleteById(todo.getId());
 		todoRepository.save(todo);
 		

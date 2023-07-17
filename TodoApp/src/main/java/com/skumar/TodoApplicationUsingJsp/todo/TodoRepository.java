@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TodoRepository extends JpaRepository<Todo, Integer>{
 
-	public List<Todo> findByUsername(String username);
+	public List<Todo> findByUserName(String username);
 
 }
