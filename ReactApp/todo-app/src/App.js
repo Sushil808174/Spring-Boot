@@ -1,14 +1,9 @@
 import './App.css';
-import FirstComponent from './components/learn-example/FirstComponent';
-import SecondComponent from './components/learn-example/SecondComponent';
-import ThirdComponent from './components/learn-example/ThirdComponent';
-
+import LearningComponent from './components/learn-example/LearningComponent';
 function App() {
   return (
     <div className="App">
-      <FirstComponent/>
-      <SecondComponent/>
-      <ThirdComponent/>
+      <LearningComponent/>
     </div>
   );
 }
