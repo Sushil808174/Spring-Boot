@@ -1,13 +1,36 @@
 import './App.css';
-import LearningComponent from './components/learn-example/LearningComponent';
+// import Counter from './components/counter/Counter';
+import TodoApp from './components/todo/TodoApp'
+
 function App() {
   return (
     <div className="App">
-      <LearningComponent/>
+      {/* <PlayintWithProps property1="value1" property2="value2"/> */}
+      {/* <Counter/> */}
+
+      <TodoApp/>
     </div>
   );
 }
 
+// function PlayintWithProps(properties){
+//   console.log(properties)
+//   console.log(properties.property1)
+//   console.log(properties.property2)
+//   return(
+//     <div>Props</div>
+//   )
+// }
+
+
+
+// function PlayintWithProps({property1,property2}){
+//   console.log(property1)
+//   console.log(property2)
+//   return(
+//     <div>Props</div>
+//   )
+// }
 
 
 export default App;
