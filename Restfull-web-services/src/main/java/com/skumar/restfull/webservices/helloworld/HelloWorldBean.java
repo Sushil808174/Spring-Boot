@@ -1,4 +1,4 @@
-package com.skumar.restfull.webservices;
+package com.skumar.restfull.webservices.helloworld;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
