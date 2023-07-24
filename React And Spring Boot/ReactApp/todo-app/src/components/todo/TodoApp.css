@@ -1,0 +1,10 @@
+label,input,button{
+    padding: 10px;
+    margin: 10px;
+}
+.FooterComponent{
+    bottom: 0;
+    position:absolute;
+    width: 90%;
+    height: 35px;
+}
