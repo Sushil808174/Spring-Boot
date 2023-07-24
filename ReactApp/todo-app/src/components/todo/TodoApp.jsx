@@ -8,6 +8,7 @@ import ErrorComponent from './ErrorComponent'
 import WelcomeComponent from './WelcomeComponent'
 import LoginComponent from './LoginComponent'
 import AuthProvider, { useAuth } from './security/AuthContext'
+import TodoComponent from './TodoComponent'
 import './TodoApp.css'
 
 function AuthenticatedRouter({children}){
@@ -38,6 +39,11 @@ export default function TodoApp(){
                         <Route path='/list-todos' element={ 
                             <AuthenticatedRouter>
                                 <ListTodosComponent/>
+                            </AuthenticatedRouter>
+                        } />
+                        <Route path='/list-todos/:id' element={ 
+                            <AuthenticatedRouter>
+                                <TodoComponent/>
                             </AuthenticatedRouter>
                         } />
 

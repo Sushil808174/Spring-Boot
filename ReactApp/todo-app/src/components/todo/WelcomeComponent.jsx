@@ -1,18 +1,18 @@
 import { useParams,Link } from "react-router-dom";
 import { useState } from "react";
-import {retrieveHelloWorldHandlerBean,retrieveHelloWorldHandlerPathVariable} from './api/HelloWorldApiService'
+import {retrieveHelloWorldHandlerPathVariable} from './api/HelloWorldApiService'
+import { useAuth } from "./security/AuthContext";
 function WelcomeComponent(){
-    const params = useParams();
+    // const params = useParams();
     const [message,setMessage] = useState(null);
+    const authContext = useAuth();
+    const username = authContext.username;
 
     function callHelloWorld(){
 
-        // retrieveHelloWorldHandlerBean()
-        // .then(respnse => successfulResponse(respnse))
-        // .catch(error => errorResponse(error))
-        // .finally(() => console.log('cleanup'))
+       
 
-        retrieveHelloWorldHandlerPathVariable('Susheel')
+        retrieveHelloWorldHandlerPathVariable(username)
         .then(respnse => successfulResponse(respnse))
         .catch(error => errorResponse(error))
         .finally(() => console.log('cleanup'))
@@ -28,7 +28,7 @@ function WelcomeComponent(){
 
     return(
         <div className="WelcomeComponent">
-            <h1>Welcome {params.username}</h1>
+            <h1>Welcome {username}</h1>
             <div>
                 Manage your todos - <Link to="/list-todos">Go here.</Link>
             </div>
